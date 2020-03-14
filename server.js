@@ -16,6 +16,7 @@ require("babel-register")({
   // ignore: []
 });
 
+
 // require("babel-core").transform("code", {
 //   presets: ["react"]
 // });
