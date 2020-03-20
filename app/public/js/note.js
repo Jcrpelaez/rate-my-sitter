@@ -52,18 +52,19 @@ $(document).ready(function() {
     newPostCard.css("margin-bottom", "15px");
     var newPostCardHeading = $("<div>");
     newPostCardHeading.addClass("card-header");
+
+    if (post.firstname === localStorage.getItem("firstname")) {
     var deleteBtn = $("<button>");
     deleteBtn.text("x");
     deleteBtn.addClass("float-right");
     deleteBtn.addClass("delete btn btn-secondary");
-    deleteBtn.addClass("float-right");
     var editBtn = $("<button>");
     editBtn.text("EDIT");
     editBtn.addClass("float-right");
     editBtn.addClass("edit btn btn-default");
-
+    }
+    
     var newPostTitle = $("<h2>");
-
     var newPostDate = $("<small>");
     var newPostCategory = $("<p>");
     newPostCategory.text(post.category);
@@ -77,11 +78,15 @@ $(document).ready(function() {
     var newPostBody = $("<p>");
     newPostTitle.text(post.title + " ");
     newPostBody.text(post.body);
+    var newPostAuthor = $("<h5>")
+    newPostAuthor.text(post.firstname + " " + post.lastname)
+    newPostAuthor.addClass("author-container");
     var formattedDate = new Date(post.createdAt);
     formattedDate = moment(formattedDate).format("MMMM Do YYYY");
     var newPostDate = $("<h6>");
     newPostDate.text(formattedDate);
     newPostDate.addClass("date-container");
+    newPostTitle.append(newPostAuthor);
     newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
     newPostCardHeading.append(editBtn);
